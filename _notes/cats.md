@@ -1,21 +1,105 @@
 ---
-title: A note about cats
+{"dg-publish":true,"permalink":"/0/070-book/library/","tags":"gardenEntry"}
 ---
 
-This is a second note with a poem with cats. 
+# 독서 
 
-Here's a link to a note that explains why it's important to [[move your body every day]].
+## 🟦 읽고 있는 책 
 
-> I like my pillow, my fancy bed,
->
-> My cat tree and the bathroom sink.
->
-> Each has its time and fills a need,
->
-> but a box is best when I want to think.
 
-You can create as many notes as you want.
+```dataview
+TABLE without id 
+	status as "상태",
+	("![coverimg|50](" + cover_url+ ")") as "북커버",
+	file.link as "도서명", 
+	category as "카테고리", 
+	dateformat(start_read_date, "DD") as "시작일", 
+	dateformat(finish_read_date, "DD") as "완료일",
+	my_rate as "내 평점",
+	book_note as "내 서평"
+FROM  #📚독서
+       WHERE status = "🟦 진행중" and !contains(file.path, "Templates") 
+       sort start_read_date desc 
+```
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et risus at ipsum pharetra pellentesque vel in massa. Nam ornare, velit sed pulvinar gravida, justo ipsum eleifend augue, id porta velit eros vestibulum odio. Vestibulum dignissim malesuada sapien, eu volutpat lacus pellentesque et. Curabitur dui nisi, sagittis ut tempor ac, scelerisque in diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum vitae euismod ex. Morbi lacinia iaculis tempor.
 
-Nunc porttitor lacus ullamcorper mauris porttitor feugiat. Vestibulum condimentum lacus vitae orci lobortis pellentesque in ac dolor. Nullam libero justo, suscipit id suscipit vel, tincidunt vitae lectus. Phasellus gravida iaculis ligula, at pharetra urna. Nunc vel tellus eleifend, aliquet magna non, condimentum est. Pellentesque vulputate posuere felis eget sodales. Cras finibus tortor porta libero bibendum, vel bibendum orci luctus. Donec ac eros vitae erat malesuada imperdiet at tempor turpis.
+
+## 🟧 읽을 책 
+
+```dataview 
+TABLE without id
+		status as "상태", 
+		("![coverimg|50](" + cover_url+ ")") as "북커버",
+		file.link as "도서명",
+		category as "카테고리", 
+		 dateformat(start_read_date, "DD") as "시작일",
+		dateformat(finish_read_date, "DD") as "완료일", 
+		my_rate as "내 평점",
+		book_note as "내 서평"
+FROM #📚독서
+          WHERE status = "🟧 예정" and !contains(file.path, "Templates")  
+          SORT start_read_date desc 
+``` 
+
+
+## 🟨 읽다가 미룬 책 
+```dataview 
+TABLE without id 
+	status as "상태", 
+	("![coverimg|50](" + cover_url+ ")") as "북커버",
+	file.link as "도서명", 
+	category as "카테고리",
+	
+	dateformat(start_read_date, "DD") as "시작일", 
+	dateformat(finish_read_date, "DD") as "완료일", 
+	my_rate as "내 평점",
+	book_note as "내 서평"
+FROM #📚독서  
+	WHERE status = "🟨 연기" and !contains(file.path, "Templates")  
+	SORT start_read_date desc
+``` 
+
+
+## 🟩 다 읽은 책
+```dataview 
+TABLE without id 
+	status as "상태", 
+	("![coverimg|50](" + cover_url+ ")") as "북커버",
+	file.link as "도서명", 
+	category as "카테고리",
+	
+	dateformat(start_read_date, "DD") as "시작일", 
+	dateformat(finish_read_date, "DD") as "완료일", 
+	my_rate as "내 평점",
+	book_note as "내 서평"
+FROM #📚독서  
+	WHERE status = "🟩 완료" and !contains(file.path, "Templates")  
+	SORT start_read_date desc
+``` 
+
+
+
+
+------------------------
+  -----------------------
+--------------------  
+
+
+```dataview
+ Table description
+ from [[#this.file.name]] and
+ !outgoing([[#this.file.name]])
+
+```
+
+--------------------
+--------------------
+
+출처: [https://olait.tistory.com/31](https://olait.tistory.com/31) [Second Brain with Obsidian]
+
+
+```
+cssClasses : row-alt,table-small,col-lines,row-lines,table-numbers
+```
+
+#📚독서  #독서  #library
